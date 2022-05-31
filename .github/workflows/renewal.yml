@@ -17,11 +17,11 @@ jobs:
         run: sudo make install
       - name: Configure freenom-script
         run: |
-          cat << EOF > /usr/local/etc/freenom.conf
+          cat << EOF > ./freenom.conf
           ${{ secrets.CONF }}
           EOF
       - name: random sleep
         if: github.event_name == 'schedule'
         run: sleep $(shuf -i 10-1800 -n 1)
       - name: run script
-        run: sudo freenom.sh -r -a &> /dev/null
+        run: freenom.sh -r -a -c ./freenom.conf &> /dev/null
