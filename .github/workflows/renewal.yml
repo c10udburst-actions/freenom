@@ -17,7 +17,7 @@ jobs:
         run: sudo make install
       - name: Configure freenom-script
         run: |
-          cat << EOF > ./freenom.conf
+          cat << EOF >> ./freenom.conf
           ${{ secrets.CONF }}
           EOF
       - name: random sleep
