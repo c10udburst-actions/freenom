@@ -13,10 +13,14 @@ jobs:
         with:
           submodules: 'true'
           repository: 'mkorthof/freenom-script'
+      - uses: actions/checkout@v2
+        with:
+          path: 'work'
       - name: Install freenom-script
         run: sudo make install
       - name: Configure freenom-script
         run: |
+          cp ./work/freenom.conf .
           cat << EOF >> ./freenom.conf
           ${{ secrets.CONF }}
           EOF
