@@ -29,3 +29,5 @@ jobs:
         run: sleep $(shuf -i 10-1800 -n 1)
       - name: run script
         run: freenom.sh -r -a -c ./freenom.conf
+      - name: get log
+        run: cat /tmp/freenom*
